@@ -7,7 +7,8 @@ body {
 }
 
 div.calcbody {
-    border: 1px solid red;
+    border: 1px solid black;
+    box-shadow: 0px 2px 5px 0px rgba(14, 37, 34, 0.87);
     border-radius: 3px;
     background-color: rgba(81, 87, 86, 0.4);
     min-width: 270px;
@@ -25,11 +26,12 @@ div.display {
     max-width: 270px;
     min-height: 75px;
     max-height: 75px;
-    padding-top: 10px
+    padding-top: 10px;
+    background-color: rgb(66, 62, 62);
 }
 
 div.numdisplay {
-    background-color: rgba(81, 87, 86, 0.4);
+    background-color: rgb(162, 170, 169);
     border: 1px solid black;
     border-radius: 7px;
     min-width: 254px;
@@ -59,9 +61,19 @@ div.buttonsgrid {
 
 .buttonsgrid button {
     display: inline-block;
-    width: 95%;
+    width: 90%;
+    height: 95%;
     border-radius: 50px;
+    border: .5px solid black;
+    box-shadow: 0px 3px rgba(14, 37, 34, 0.7);
+}
 
+.buttonsgrid button:active {
+    box-shadow: 0px 1px rgba(14, 37, 34, 0.85);
+    transform: translateY(2px);
+}
+.buttonsgrid button:focus{
+    outline: none;
 }
 
 .add {
