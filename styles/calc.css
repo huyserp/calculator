@@ -13,8 +13,8 @@ div.calcbody {
     background-color: rgb(175, 180, 179);
     min-width: 270px;
     max-width: 270px;
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 405px;
+    max-height: 405px;
     position: fixed;
     left: 25%;
     top: 15%;
@@ -26,10 +26,10 @@ div.display {
     max-width: 270px;
     min-height: 91px;
     max-height: 91px;
-    padding-top: 10px;
+    padding-top: 14px;
     background-color: rgb(66, 62, 62);
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 div.numdisplay {
