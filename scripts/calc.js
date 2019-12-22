@@ -1,7 +1,8 @@
 const numDisplay = document.querySelector('.numdisplay');
 
-
-/////// Number Buttons ///////
+//////////////////////////////////////////////////
+///////////////// Number Buttons /////////////////
+//////////////////////////////////////////////////
 
 const btnZero = document.querySelector('.zero')
 btnZero.addEventListener('click', () => {
@@ -52,7 +53,12 @@ const btnNine = document.querySelector('.nine');
 btnNine.addEventListener('click', () => {
     numDisplay.textContent += btnNine.textContent;});
 
-/////// Operator Buttons ///////
+
+////////////////////////////////////////////////////    
+///////////////// Operator Buttons /////////////////
+////////////////////////////////////////////////////
+
+let oppArray = [];
 
 const btnDivide = document.querySelector('.divide');
 const btnMultiply = document.querySelector('.multiply');
@@ -60,7 +66,10 @@ const btnSubtract = document.querySelector('.subtract');
 const btnAdd = document.querySelector('.add');
 const btnEquals = document.querySelector('.equals');
 
-/////// Control Buttons ///////
+
+///////////////////////////////////////////////////
+///////////////// Control Buttons /////////////////
+///////////////////////////////////////////////////
 
 const btnClear = document.querySelector('.clear');
 btnClear.addEventListener('click', () => {
@@ -68,9 +77,20 @@ btnClear.addEventListener('click', () => {
 });
 
 const btnBackspace = document.querySelector('.backspace');
-// btnBackspace.addEventListener('click', () => {
-//     let del = numDisplay.textContent;
-//     del.substring(0, del.length - 1);
-// });
+btnBackspace.addEventListener('click', () => {
+    let del = numDisplay.textContent;
+    let oneLess = del.substring(0, del.length - 1);
+    numDisplay.textContent = oneLess;
+});
 
 const btnPlusMinus = document.querySelector('.plusminus');
+btnPlusMinus.addEventListener('click', () => {
+    let flip = numDisplay.textContent;
+    if (!flip.includes('-')) {
+        let oppSign = '-' + flip;
+        numDisplay.textContent = oppSign;
+    } else {
+        let oppSign = flip.substring(1, flip.length);
+        numDisplay.textContent = oppSign;
+    };
+});
