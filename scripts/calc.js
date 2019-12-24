@@ -2,6 +2,7 @@ const numDisplay = document.querySelector('.numdisplay');
 let numArr = [];
 let latestOperator;
 
+
 //////////////////////////////////////////////////
 ///////////////// Number Buttons /////////////////
 //////////////////////////////////////////////////
@@ -129,23 +130,7 @@ btnAdd.addEventListener('click', () => {
 const btnEquals = document.querySelector('.equals');
 btnEquals.addEventListener('click', () => {
     numArr.push(+numDisplay.textContent);
-    if(latestOperator === "+") {
-        add();
-        numDisplay.textContent = numArr[0];
-        clearAll();
-    } else if (latestOperator === "-") {
-        subtract();
-        numDisplay.textContent = numArr[0];
-        clearAll();
-    } else if (latestOperator === "x") {
-        multiply();
-        numDisplay.textContent = numArr[0];
-        clearAll();
-    } else if (latestOperator === "÷") {
-        divide();
-        numDisplay.textContent = numArr[0];
-        clearAll();
-    }
+    equals();
 });
 
 function add() {
@@ -191,5 +176,25 @@ function divide() {
         numArr[0] = "NOPE!";
     } else {
         numDisplay.textContent = '';
+    };
+};
+
+function equals() {
+    if(latestOperator === "+") {
+        add();
+        numDisplay.textContent = numArr[0];
+        clearAll();
+    } else if (latestOperator === "-") {
+        subtract();
+        numDisplay.textContent = numArr[0];
+        clearAll();
+    } else if (latestOperator === "x") {
+        multiply();
+        numDisplay.textContent = numArr[0];
+        clearAll();
+    } else if (latestOperator === "÷") {
+        divide();
+        numDisplay.textContent = numArr[0];
+        clearAll();
     };
 }
