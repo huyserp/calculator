@@ -1,5 +1,6 @@
 const numDisplay = document.querySelector('.numdisplay');
 let numArr = [];
+let latestOperator;
 
 //////////////////////////////////////////////////
 ///////////////// Number Buttons /////////////////
@@ -97,27 +98,57 @@ btnPlusMinus.addEventListener('click', () => {
 ////////////////////////////////////////////////////
 
 
-const btnDivide = document.querySelector('.divide');
+const btnDivide = document.querySelector('#divide');
 btnDivide.addEventListener('click', () => {
-    divideArray.push(+numDisplay.textContent);
+    latestOperator = btnDivide.textContent
+    numArr.push(+numDisplay.textContent);
     numDisplay.textContent = '';
 });
     
-const btnMultiply = document.querySelector('.multiply');
+const btnMultiply = document.querySelector('#multiply');
 btnMultiply.addEventListener('click', () => {
-    multArray.push(+numDisplay.textContent);
-    numDisplay.textContent = '';
+    latestOperator = btnMultiply.textContent;
+    numArr.push(+numDisplay.textContent);
+    multiply();
 });
 
-const btnSubtract = document.querySelector('.subtract');
+const btnSubtract = document.querySelector('#subtract');
 btnSubtract.addEventListener('click', () => {
-    subArray.push(+numDisplay.textContent);
-    numDisplay.textContent = '';
+    latestOperator = btnSubtract.textContent;
+    numArr.push(+numDisplay.textContent);
+    subtract();
 });
     
-const btnAdd = document.querySelector('.add');
+const btnAdd = document.querySelector('#add');
 btnAdd.addEventListener('click', () => {
+    latestOperator = btnAdd.textContent;
     numArr.push(+numDisplay.textContent);
+    add();
+});
+
+const btnEquals = document.querySelector('.equals');
+btnEquals.addEventListener('click', () => {
+    numArr.push(+numDisplay.textContent);
+    if(latestOperator === "+") {
+        add();
+        numDisplay.textContent = numArr[0];
+        clearAll();
+    } else if (latestOperator === "-") {
+        subtract();
+        numDisplay.textContent = numArr[0];
+        clearAll();
+    } else if (latestOperator === "x") {
+        multiply();
+        numDisplay.textContent = numArr[0];
+        clearAll();
+    } else if (latestOperator === "÷") {
+        divide();
+        numDisplay.textContent = numArr[0];
+        clearAll();
+    }
+});
+
+function add() {
     if (numArr[1]) {
         let sum = numArr[0] + numArr[1];
         numArr = [];
@@ -125,11 +156,40 @@ btnAdd.addEventListener('click', () => {
         numDisplay.textContent = '';
     } else {
         numDisplay.textContent = '';
-    }
-});
+    };
+};
 
-const btnEquals = document.querySelector('.equals');
-btnEquals.addEventListener('click', () => {
-    if()
-    numDisplay.textContent = numArr[0];
-});
+function subtract() {
+    if (numArr[1]) {
+        let dif = numArr[0] - numArr[1];
+        numArr = [];
+        numArr.push(dif);
+        numDisplay.textContent = '';
+    } else {
+        numDisplay.textContent = '';
+    };
+};
+
+function multiply() {
+    if (numArr[1]) {
+        let product = numArr[0] * numArr[1];
+        numArr = [];
+        numArr.push(product);
+        numDisplay.textContent = '';
+    } else {
+        numDisplay.textContent = '';
+    };
+};
+
+function divide() {
+    if (numArr[1] && numArr[0] !== 0 || numArr[1] !== 0) {
+        let product = numArr[0] / numArr[1];
+        numArr = [];
+        numArr.push(product);
+        numDisplay.textContent = '';
+    } else if (numArr[0] === 0 || numArr[1] === 0) {
+        numArr[0] = "NOPE!";
+    } else {
+        numDisplay.textContent = '';
+    };
+}

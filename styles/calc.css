@@ -79,7 +79,7 @@ div.buttonsgrid {
     outline: none;
 }
 
-.add {
+#add {
     height: 100%;
     grid-column-start: 4;
     grid-column-end: 4;
@@ -87,7 +87,7 @@ div.buttonsgrid {
     grid-row-end: 6;
 }
 
-.divide, .multiply, .subtract, .add {
+#divide, #multiply, #subtract, #add {
     background-color: hsl(51, 87%, 57%);
 }
 
