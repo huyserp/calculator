@@ -24,6 +24,7 @@ const btnOne = document.querySelector('.one');
 btnOne.addEventListener('click', () => {
     numDisplay.textContent += btnOne.textContent;});
 
+
 const btnTwo = document.querySelector('.two');
 btnTwo.addEventListener('click', () => {
     numDisplay.textContent += btnTwo.textContent;});
@@ -105,6 +106,7 @@ btnDivide.addEventListener('click', () => {
     numArr.push(+numDisplay.textContent);
     numDisplay.textContent = '';
 });
+
     
 const btnMultiply = document.querySelector('#multiply');
 btnMultiply.addEventListener('click', () => {
@@ -198,3 +200,9 @@ function equals() {
         clearAll();
     };
 }
+
+document.addEventListener('keydown', useKeyboard);
+function useKeyboard(e) {
+
+    numDisplay.textContent += `${e.key}`;
+};
