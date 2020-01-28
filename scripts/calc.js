@@ -1,4 +1,12 @@
 const numDisplay = document.querySelector('.numdisplay');
+
+function checkDisplayLength() {
+    let displayLength = numDisplay.textContent;
+    if(displayLength.length > 7){
+        numDisplay.textContent = displayLength.slice(0, 8);
+    };
+};
+
 let numArr = [];
 let latestOperator;
 
@@ -9,7 +17,9 @@ let latestOperator;
 
 const btnZero = document.querySelector('.zero')
 btnZero.addEventListener('click', () => {
-    numDisplay.textContent += btnZero.textContent;});
+    numDisplay.textContent += btnZero.textContent;
+    checkDisplayLength();
+});
 
 const btnPoint = document.querySelector('.point');
 btnPoint.addEventListener('click', () => {
@@ -17,45 +27,64 @@ btnPoint.addEventListener('click', () => {
         return;
     } else {
         numDisplay.textContent += btnPoint.textContent;
-    }
+    };
+    checkDisplayLength();
 });
 
 const btnOne = document.querySelector('.one');
 btnOne.addEventListener('click', () => {
-    numDisplay.textContent += btnOne.textContent;});
+    numDisplay.textContent += btnOne.textContent;
+    checkDisplayLength();
+});
 
 
 const btnTwo = document.querySelector('.two');
 btnTwo.addEventListener('click', () => {
-    numDisplay.textContent += btnTwo.textContent;});
+    numDisplay.textContent += btnTwo.textContent;
+    checkDisplayLength();
+});
 
 const btnThree = document.querySelector('.three');
 btnThree.addEventListener('click', () => {
-    numDisplay.textContent += btnThree.textContent;});
+    numDisplay.textContent += btnThree.textContent;
+    checkDisplayLength();
+});
 
 const btnFour = document.querySelector('.four');
 btnFour.addEventListener('click', () => {
-    numDisplay.textContent += btnFour.textContent;});
+    numDisplay.textContent += btnFour.textContent;
+    checkDisplayLength();
+});
 
 const btnFive = document.querySelector('.five');
 btnFive.addEventListener('click', () => {
-    numDisplay.textContent += btnFive.textContent;});
+    numDisplay.textContent += btnFive.textContent;
+    checkDisplayLength();
+});
 
 const btnSix = document.querySelector('.six');
 btnSix.addEventListener('click', () => {
-    numDisplay.textContent += btnSix.textContent;});
+     numDisplay.textContent += btnSix.textContent;
+    checkDisplayLength();
+});
 
 const btnSeven = document.querySelector('.seven');
 btnSeven.addEventListener('click', () => {
-    numDisplay.textContent += btnSeven.textContent;});
+    numDisplay.textContent += btnSeven.textContent;
+    checkDisplayLength();
+});
 
 const btnEight = document.querySelector('.eight');
 btnEight.addEventListener('click', () => {
-    numDisplay.textContent += btnEight.textContent;});
+    numDisplay.textContent += btnEight.textContent;
+    checkDisplayLength();
+});
 
 const btnNine = document.querySelector('.nine');
 btnNine.addEventListener('click', () => {
-    numDisplay.textContent += btnNine.textContent;});
+    numDisplay.textContent += btnNine.textContent;
+    checkDisplayLength();
+});
 
 
 ///////////////////////////////////////////////////
@@ -76,11 +105,13 @@ btnClear.addEventListener('click', () => {
 });
 
 const btnBackspace = document.querySelector('.backspace');
-btnBackspace.addEventListener('click', () => {
+btnBackspace.addEventListener('click', goBackspace);
+
+function goBackspace() {
     let del = numDisplay.textContent;
     let oneLess = del.substring(0, del.length - 1);
     numDisplay.textContent = oneLess;
-});
+};
 
 const btnPlusMinus = document.querySelector('.plusminus');
 btnPlusMinus.addEventListener('click', () => {
@@ -202,7 +233,14 @@ function equals() {
 }
 
 document.addEventListener('keydown', useKeyboard);
-function useKeyboard(e) {
 
+function useKeyboard(e) {
+    if(e.key === '1' || e.key === '2' || e.key === '3' 
+        || e.key === '4' || e.key === '5' || e.key === '6' 
+        || e.key === '7' || e.key === '8' || e.key === '9' || e.key === '.') {
     numDisplay.textContent += `${e.key}`;
+    } else {
+        return;
+    };
+    checkDisplayLength();
 };

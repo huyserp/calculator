@@ -41,14 +41,14 @@ div.numdisplay {
     min-height: 70px;
     max-height: 70px;
     margin: 0 auto;
+    padding: 0 3px;
     font-family: 'Orbitron', sans-serif;
     font-size: 35px;
     line-height: 70px;
     letter-spacing: .07em;
     text-align: right;
-    overflow: scroll;
-    
 }
+
 div.buttonsgrid {
     min-width: 254px;
     max-width: 254px;
