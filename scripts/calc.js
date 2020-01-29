@@ -86,6 +86,19 @@ btnNine.addEventListener('click', () => {
     checkDisplayLength();
 });
 
+document.addEventListener('keydown', useKeyboard);
+
+function useKeyboard(e) {
+    if(e.key === '1' || e.key === '2' || e.key === '3' 
+        || e.key === '4' || e.key === '5' || e.key === '6' 
+        || e.key === '7' || e.key === '8' || e.key === '9' || e.key === '.') {
+    numDisplay.textContent += `${e.key}`;
+    } else {
+        return;
+    };
+    checkDisplayLength();
+};
+
 
 ///////////////////////////////////////////////////
 ///////////////// Control Buttons /////////////////
@@ -133,9 +146,9 @@ btnPlusMinus.addEventListener('click', () => {
 
 const btnDivide = document.querySelector('#divide');
 btnDivide.addEventListener('click', () => {
-    latestOperator = btnDivide.textContent
+    latestOperator = btnDivide.textContent;
     numArr.push(+numDisplay.textContent);
-    numDisplay.textContent = '';
+    divide();
 });
 
     
@@ -172,6 +185,7 @@ function add() {
         numArr = [];
         numArr.push(sum);
         numDisplay.textContent = '';
+        curbLongAnswer();
     } else {
         numDisplay.textContent = '';
     };
@@ -183,6 +197,7 @@ function subtract() {
         numArr = [];
         numArr.push(dif);
         numDisplay.textContent = '';
+        curbLongAnswer();
     } else {
         numDisplay.textContent = '';
     };
@@ -194,17 +209,19 @@ function multiply() {
         numArr = [];
         numArr.push(product);
         numDisplay.textContent = '';
+        curbLongAnswer();
     } else {
         numDisplay.textContent = '';
     };
 };
 
 function divide() {
-    if (numArr[1] && numArr[0] !== 0 || numArr[1] !== 0) {
+    if (numArr[1] && numArr[0] !== 0 && numArr[1] !== 0) {
         let product = numArr[0] / numArr[1];
         numArr = [];
         numArr.push(product);
         numDisplay.textContent = '';
+        curbLongAnswer();
     } else if (numArr[0] === 0 || numArr[1] === 0) {
         numArr[0] = "NOPE!";
     } else {
@@ -213,34 +230,43 @@ function divide() {
 };
 
 function equals() {
-    if(latestOperator === "+") {
+    if(!latestOperator) {
+        return;
+    } else if(latestOperator === "+") {
         add();
         numDisplay.textContent = numArr[0];
+        curbLongAnswer();
         clearAll();
     } else if (latestOperator === "-") {
         subtract();
         numDisplay.textContent = numArr[0];
+        curbLongAnswer();
         clearAll();
     } else if (latestOperator === "x") {
         multiply();
         numDisplay.textContent = numArr[0];
+        curbLongAnswer();
         clearAll();
     } else if (latestOperator === "÷") {
         divide();
         numDisplay.textContent = numArr[0];
+        curbLongAnswer();
         clearAll();
     };
-}
+};
 
-document.addEventListener('keydown', useKeyboard);
-
-function useKeyboard(e) {
-    if(e.key === '1' || e.key === '2' || e.key === '3' 
-        || e.key === '4' || e.key === '5' || e.key === '6' 
-        || e.key === '7' || e.key === '8' || e.key === '9' || e.key === '.') {
-    numDisplay.textContent += `${e.key}`;
-    } else {
-        return;
+function curbLongAnswer() {
+    let answer = numDisplay.textContent;
+    if(parseFloat(answer) < 1 && answer.length > 7){
+        numDisplay.textContent = parseFloat(answer).toFixed(7);
+    } else if(parseInt(answer) > 1 && answer.length > 7){
+        numDisplay.textContent = parseInt(answer).toExponential(3);
     };
-    checkDisplayLength();
+};
+
+function checkForStringOp() {
+// if (NumArr[1] && an operator button was just pushed){
+//     numArr[0] = numArr[1]; 
+//     numArr.pop(1);
+//     continue with rest of function...or something like that
 };
