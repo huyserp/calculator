@@ -1,5 +1,5 @@
 
-Known bugs: the curbLongAnswers function should be "curbing" answers that extend beyond the display window.  It does, for MOST all expressions... but somehow I can push it past beyond when I string together enough equations... not sure why its not affecting those but something to return to.  It is likely that this won't come up as an issues in 99% of the calculators use. 
+Known bugs: the curbLongAnswers function should be "curbing" answers that extend beyond the display window.  It does, for MOST all expressions... but somehow I can push it beyond when I string together enough equations... not sure why something to return to.
 ------------------------------------
 Here are some use cases (abilities your project needs to have):
 
